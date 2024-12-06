@@ -1,0 +1,11 @@
+name: 00 - Introdução
+
+on:
+  workflow_dispatch:
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+        run: echo "Hello World!"
