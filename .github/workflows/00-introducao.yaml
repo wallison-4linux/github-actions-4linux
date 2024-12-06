@@ -2,23 +2,33 @@ name: 00 - Introdução
 
 on:
   workflow_dispatch:
+    inputs:
+      target-env:
+        type: choice
+        options:
+          - dev
+          - prod
+        description: Ambiente no qual a aplicação irá rodar
+      dry-run:
+        type: boolean
+        required: true
+        default: false
 
 jobs:
-  echo:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: echo
-        run: echo "Hello World!"
-      - name: Failed step
-        run: |
-          echo "Falhando..."
-          exit 1
-      - name: Tchau
-        run: |
-          echo "Tchau"
-  echo2:
+      - name:
+        run: echo "Unit tests"
+      - name: build
+        run: echo "Build application"
+  deploy:
+    if: ${{ inputs.dry-run != true }}
+    needs:
+      - build
     runs-on: windows-latest
     steps:
-      - name: Print OS
+      - name: deploy 
         run: |
           echo "OS: ${{ runner.os }}"
+          echo "Deploying to ${{ inputs.target-env }}"
