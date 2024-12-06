@@ -1,0 +1,17 @@
+{
+  "name": "github-actions-4linux",
+  "version": "1.0.0",
+  "description": "Jobs são executados paralelamente",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "1.11.1",
+    "@actions/exec": "1.1.1",
+    "@actions/github": "6.0.0"
+  }
+}
