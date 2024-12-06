@@ -9,3 +9,10 @@ jobs:
     steps:
       - name: echo
         run: echo "Hello World!"
+      - name: Failed step
+        run: |
+          echo "Falhando..."
+          exit 1
+      - name: Tchau
+        run: |
+          echo "Tchau"
