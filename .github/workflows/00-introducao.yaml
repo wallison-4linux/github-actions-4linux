@@ -14,14 +14,26 @@ on:
         required: true
         default: false
 
+env:
+  MY_VAR: workflow
+
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - name:
-        run: echo "Unit tests"
-      - name: build
-        run: echo "Build application"
+      - name: echo var
+        env:
+          MY_VAR: step
+        run: |
+          echo "Variável: ${{ env.MY_VAR }}"
+  build:
+    runs-on: ubuntu-latest
+    env:
+      MY_VAR: job
+    steps:
+      - name: echo-var
+        run: |
+          echo "Variável: ${{ env.MY_VAR }}"
   deploy:
     if: ${{ inputs.dry-run != true }}
     needs:
@@ -30,5 +42,4 @@ jobs:
     steps:
       - name: deploy 
         run: |
-          echo "OS: ${{ runner.os }}"
-          echo "Deploying to ${{ inputs.target-env }}"
+          echo "Variável: ${{ env.MY_VAR }}"
