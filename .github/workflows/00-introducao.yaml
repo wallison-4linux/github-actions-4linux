@@ -16,3 +16,9 @@ jobs:
       - name: Tchau
         run: |
           echo "Tchau"
+  echo2:
+    runs-on: windows-latest
+    steps:
+      - name: Print OS
+        run: |
+          echo "OS: ${{ runner.os }}"
